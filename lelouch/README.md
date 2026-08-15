@@ -5,6 +5,7 @@
 > *「我，毁灭世界。我，创造世界。」*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Version: 1.1.0](https://img.shields.io/badge/Skill_Version-1.1.0-blue.svg)](../CHANGELOG.md)
 
 <br>
 
@@ -16,7 +17,9 @@
 官方设定资料集的深度调研，提炼5个核心心智模型、<br>
 6条决策启发式、完整的表达DNA和全部情感触发词。
 
-[看效果](#效果示例) · [安装](#安装) · [蒸馏了什么](#蒸馏了什么) · [仓库结构](#仓库结构)
+[看效果](#效果示例) · [安装](#安装) · [蒸馏了什么](#蒸馏了什么) · [更新日志](#更新日志) · [路线图](#路线图)
+
+> 本文件为技能目录内展示页（随 `lelouch/` 独立分发时生效）；仓库主页见 [根目录 README](../README.md)。
 
 </div>
 
@@ -117,6 +120,23 @@ C.C.      看。
 
 ---
 
+## 安装
+
+本目录即完整技能，`SKILL.md` 为核心文件（单文件即可运行）：
+
+1. 将整个 `lelouch/` 目录复制到你所用 Agent / Skill 平台的技能目录下；
+2. 保持目录结构（`references/` 与 `examples/` 供扩展阅读，不参与触发）：
+   ```
+   <你的技能目录>/lelouch/
+   ├── SKILL.md
+   ├── references/research/   # 6 份调研文件
+   └── examples/              # 示例对话
+   ```
+3. **生产环境请锁定版本**（当前 `1.1.0`，对应仓库 tag `v1.1.0`），不要跟随 `latest`；
+4. 升级前阅读 [CHANGELOG.md](../CHANGELOG.md)，发布验证与回滚流程见 [RELEASE-CHECKLIST.md](../RELEASE-CHECKLIST.md)。
+
+---
+
 ## 蒸馏了什么
 
 ### 5个核心心智模型
@@ -161,16 +181,16 @@ C.C.      看。
 
 ## 调研来源
 
-7个调研文件，全部在 [`references/research/`](references/research/) 目录：
+6个调研文件（编号02缺位，规划中），全部在 [`references/research/`](references/research/) 目录：
 
 | 文件 | 内容 |
 |------|------|
 | `01-character-profile.md` | 基础档案、能力、机甲、趣闻 |
 | `03-personality-core.md` | 深度性格分析与内在矛盾 |
 | `04-expression-dna.md` | 说话方式、标志性短语、对话模板 |
+| `05-decisions.md` | 8个关键决策分析 |
 | `06-relationships.md` | 完整人际关系图谱 |
 | `07-story-arc.md` | 完整故事时间线 |
-| `05-decisions.md` | 8个关键决策分析 |
 
 ### 一手来源（后续优化）
 - Code Geass 反叛的鲁路修 R1（2006-2007）
@@ -187,25 +207,33 @@ C.C.      看。
 
 ---
 
-## 仓库结构
+## 更新日志
 
-```
-lelouch/
-├── README.md                             # GitHub展示页
-├── SKILL.md                              # 核心技能文件（可直接安装）
-├── LICENSE                               # MIT
-├── lelouch.jpg                           # 角色形象
-├── examples/
-│   └── demo-conversation.md              # 5段实战对话
-└── references/
-    └── research/
-        ├── 01-character-profile.md       # 角色档案
-        ├── 03-personality-core.md        # 性格核心
-        ├── 04-expression-dna.md          # 表达DNA
-        ├── 05-decisions.md               # 决策日志
-        ├── 06-relationships.md           # 人际关系
-        └── 07-story-arc.md               # 故事弧线
-```
+### v1.1.0（2026-08-15）· 本次更新
+
+依据《Agent-Skill 版本管理》实践对仓库整体规范化，**技能内容（触发条件、心智模型、表达DNA）零改动**，属兼容性升级：
+
+- 新增版本元数据（`SKILL.md` → `version: 1.1.0`）、[CHANGELOG](../CHANGELOG.md)、[技能登记表](../SKILL-REGISTRY.md)、[发布验证清单](../RELEASE-CHECKLIST.md)；
+- 修正调研文件数量（7 → 6，编号 02 待补）；
+- 本 README 补齐此前缺失的免责声明（含侵权删除条款），与根 README 对齐。
+
+**完整变更**：[CHANGELOG.md](../CHANGELOG.md)
+
+### v1.0.0（2026-05-10）· 初始基线
+
+完整数字人格技能：5 个心智模型、6 条决策启发式、表达 DNA、情感触发词、6 份调研文件、示例对话、MIT 许可与非商业免责声明。
+
+---
+
+## 路线图
+
+1. **补齐编号 02 调研文件**（外观与形象分析）→ 计划 `1.2.0`
+2. **一手来源核对**——回看 R1/R2/剧场版与官方设定集核对关键事实与台词 → 计划 `1.2.x / 1.3.0`
+3. **共存测试补全**——多角色人格技能环境实测触发边界 → 计划 `1.3.0`
+4. **评测基线建设**——固定题库量化对比，登记表记录分数 → 计划 `1.4.0`
+5. **触发边界优化（若需）**——调整激活条件属不兼容改动，升主版本 `2.0.0`
+
+详见仓库主页 [README](../README.md) 路线图章节。
 
 ---
 
@@ -214,3 +242,19 @@ lelouch/
 MIT — 随便用，随便改，随便躺。
 
 ---
+
+# 免责声明 (Disclaimer)
+
+## 1. 角色版权归属 (Character Copyright)
+本项目是一个非商业性的**二次创作（Fan Art / Derivative Work）**项目。
+项目中涉及的所有与《反叛的鲁鲁修》（Code Geass）相关的角色名称、形象、设定及商标等知识产权，均归其原版权方所有。本项目不拥有该等权利，亦无意侵犯任何知识产权。
+
+## 2. 非商业性质与营利目的 (Non-Commercial)
+本项目完全出于学习、研究及同好交流的目的而创建。**严禁将本项目（包括其代码、衍生作品或相关素材）用于任何商业用途**（包括但不限于付费售卖、内置广告盈利、商业赞助等）。
+
+## 3. 免责条款 (Liability)
+本项目按“原样”提供，作者不对使用本项目产生的任何直接或间接损失负责。
+
+## 4. 侵权删除 (Takedown Policy)
+如果本项目的任何内容侵犯了您的合法权益，请通过以下邮箱 [924492886@qq.com] 联系我。
+一经核实，我将立即删除相关侵权内容，或根据您的要求关闭整个项目仓库。

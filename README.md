@@ -5,6 +5,7 @@
 > *「我，毁灭世界。我，创造世界。」*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Version: 1.1.0](https://img.shields.io/badge/Skill_Version-1.1.0-blue.svg)](CHANGELOG.md)
 
 <br>
 
@@ -16,7 +17,7 @@
 官方设定资料集的深度调研，提炼5个核心心智模型、<br>
 6条决策启发式、完整的表达DNA和全部情感触发词。
 
-[看效果](#效果示例) · [安装](#安装) · [蒸馏了什么](#蒸馏了什么) · [仓库结构](#仓库结构)
+[看效果](#效果示例) · [安装](#安装) · [蒸馏了什么](#蒸馏了什么) · [仓库结构](#仓库结构) · [更新日志](#更新日志) · [路线图](#路线图)
 
 </div>
 
@@ -111,9 +112,39 @@ C.C.      看。
 
 > 这是纯粹的放松——你对C.C.是唯一的你本人。没有面具。拌嘴本身就是你们的语言。
 
-> 完整对话记录在 [`examples/`](examples/) 目录。
+> 完整对话记录在 [`examples/`](lelouch/examples/) 目录。
 
 这不是ChatGPT套了个鲁路修面具。每段回应都在运用鲁路修的具体心智模型——「棋局思维」「结果至上」「面具管理」「王者负担」「以恶成就善」。它不复读台词，它用鲁路修的认知框架分析你的问题。
+
+---
+
+## 安装
+
+### 手动安装（通用）
+
+1. 下载 [`lelouch/SKILL.md`](lelouch/SKILL.md)（核心技能文件，单文件即可运行）；
+2. 按你所用的 Agent / Skill 平台规范放置（如技能目录下的 `lelouch/SKILL.md`）；
+3. 完整体验建议连同 `references/` 与 `examples/` 一起放入，保持目录结构：
+   ```
+   <你的技能目录>/lelouch/
+   ├── SKILL.md
+   ├── references/research/   # 6 份调研文件
+   └── examples/              # 示例对话
+   ```
+
+### 版本锁定（重要）
+
+本仓库采用语义化版本管理：
+
+- **生产环境**：请锁定明确版本（如 `lelouch@1.1.0`，对应 Git tag `v1.1.0`），禁止跟随 `latest`，避免技能行为意外变更；
+- **开发 / 尝鲜环境**：可跟随 `main` 分支（`latest`）；
+- 版本历史见 [CHANGELOG.md](CHANGELOG.md)，升级前请阅读对应版本的变更说明。
+
+### 升级与回滚
+
+- 每次发布前经过[四维度验证](RELEASE-CHECKLIST.md)（触发 / 执行 / 共存 / 安全）；
+- 升级异常时直接切回上一稳定版（`1.0.0`），历史版本均有 Git tag 可精确回退；
+- 技能当前状态与评测记录见 [SKILL-REGISTRY.md](SKILL-REGISTRY.md)。
 
 ---
 
@@ -161,7 +192,7 @@ C.C.      看。
 
 ## 调研来源
 
-7个调研文件，全部在 [`references/research/`](references/research/) 目录：
+6个调研文件（编号02缺位，规划中），全部在 [`references/research/`](lelouch/references/research/) 目录：
 
 | 文件 | 内容 |
 |------|------|
@@ -190,22 +221,71 @@ C.C.      看。
 ## 仓库结构
 
 ```
-lelouch/
-├── README.md                             # GitHub展示页
-├── SKILL.md                              # 核心技能文件（可直接安装）
+lelouch_skill/
+├── README.md                             # 本展示页
+├── CHANGELOG.md                          # 版本记录（语义化版本）
+├── SKILL-REGISTRY.md                     # 技能登记表（负责人/版本/评测/状态）
+├── RELEASE-CHECKLIST.md                  # 发布验证清单（四维测试+灰度回滚）
 ├── LICENSE                               # MIT
-├── lelouch.jpg                           # 角色形象
-├── examples/
-│   └── demo-conversation.md              # 5段实战对话
-└── references/
-    └── research/
-        ├── 01-character-profile.md       # 角色档案
-        ├── 03-personality-core.md        # 性格核心
-        ├── 04-expression-dna.md          # 表达DNA
-        ├── 05-decisions.md               # 决策日志
-        ├── 06-relationships.md           # 人际关系
-        └── 07-story-arc.md               # 故事弧线
+└── lelouch/                              # 技能目录（可直接安装）
+    ├── README.md                         # 技能内展示页
+    ├── SKILL.md                          # 核心技能文件
+    ├── LICENSE                           # MIT
+    ├── lelouch.jpg                       # 角色形象
+    ├── examples/
+    │   └── demo-conversation.md          # 5段实战对话
+    └── references/
+        └── research/
+            ├── 01-character-profile.md   # 角色档案
+            ├── 03-personality-core.md    # 性格核心
+            ├── 04-expression-dna.md      # 表达DNA
+            ├── 05-decisions.md           # 决策日志
+            ├── 06-relationships.md       # 人际关系
+            └── 07-story-arc.md           # 故事弧线
 ```
+
+---
+
+## 更新日志
+
+### v1.1.0（2026-08-15）· 本次更新
+
+依据《Agent-Skill 版本管理》实践对仓库整体规范化，**技能内容（触发条件、心智模型、表达DNA）零改动**，属兼容性升级：
+
+**新增**
+
+- `SKILL.md` 增加语义化版本元数据（`version: 1.1.0`），运行时可锁定版本；
+- `CHANGELOG.md`：版本记录与升级规则（主/次/修订号判定标准）；
+- `SKILL-REGISTRY.md`：技能登记表——负责人、版本履历、评测记录、废弃流程；
+- `RELEASE-CHECKLIST.md`：发布验证清单——触发/执行/共存/安全四维测试、灰度发布、回滚窗口；
+- README 补充「安装」章节（含版本锁定指引），修复原安装锚点断链。
+
+**修正**
+
+- 「7个调研文件」更正为 6 个（编号 02 缺失，见路线图）；
+- `lelouch/README.md` 同步补齐免责声明（含侵权删除条款），消除双 README 漂移；
+- `lelouch/LICENSE` 版权信息与根 LICENSE 统一；
+- 修复 `examples/` 相对链接。
+
+**完整变更**：[CHANGELOG.md](CHANGELOG.md)
+
+### v1.0.0（2026-05-10）· 初始基线
+
+完整数字人格技能：5 个心智模型、6 条决策启发式、表达 DNA、情感触发词、6 份调研文件、示例对话、MIT 许可与非商业免责声明。
+
+---
+
+## 路线图
+
+按优先级排列，版本号将遵循语义化规则（触发边界类改动升主版本）：
+
+1. **补齐编号 02 调研文件**（外观与形象分析）——补全 `references/research/` 编号序列，使人格模型输入完整 → 计划 `1.2.0`
+2. **一手来源核对**——目前调研以二手来源（百科、社区分析）为主，计划系统性回看 R1/R2/剧场版与官方设定集核对关键事实与台词 → 计划 `1.2.x / 1.3.0`
+3. **共存测试补全**——在多角色人格技能环境中实测触发边界，收窄易冲突关键词，出具共存测试报告 → 计划 `1.3.0`
+4. **评测基线建设**——建立固定题库（20+ 触发/反触发/风格回归问题），每次发版量化对比，登记表记录分数 → 计划 `1.4.0`
+5. **触发边界优化（若需）**——若实测发现误触发/漏触发，将调整 `description` 激活条件，**属不兼容改动，升主版本 2.0.0**
+
+> 远期想法、已废弃想法均在 [Issues](https://github.com/Nothing2say0107/lelouch_skill/issues) 跟踪。
 
 ---
 
